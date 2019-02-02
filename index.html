@@ -28,8 +28,8 @@
 		var increment = 1;
 		
 		function loadTimer() {
-			//setInterval(getNumberList, 5000);
-			getNumberList();
+			setInterval(getNumberList, 5000);
+			//getNumberList();
 		}
 		
 		function createListTable(objectArray) {
@@ -43,7 +43,8 @@
 		}
 		
 		function getNumberList() {
-			var url = 'http://localhost:5555/listnumberdetail/summary/';
+			//var url = 'http://localhost:5555/listnumberdetail/summary/';
+			var url = 'https://silo-services.herokuapp.com/listnumberdetail/summary/';
 			//var objectArray = JSON.parse(localStorage.getItem('numberList'));
 			console.time('Request Time: ');
 			fetch(url)
