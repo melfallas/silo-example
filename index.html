@@ -54,10 +54,10 @@
 		
 		function createListTable(objectArray) {
 			console.log('Cargando ' + increment++);
-			var html = '<table class="table" ><tr><th>Número</th><th>Importe</th></tr>';
+			var html = '<table class="table" ><tr><th style="text-align:center;" >Número</th><th>Importe</th></tr>';
 			for(var index in objectArray) {
 				var saleImport = new Intl.NumberFormat().format(objectArray[index].totalImport);
-				html += '<tr><td>' + objectArray[index].numberId + '</td><td>' + fillString(saleImport, 10, '&nbsp;') + '</td></tr>';
+				html += '<tr><td style="text-align:center;" >' + objectArray[index].numberId + '</td><td>' + fillString(saleImport, 10, '&nbsp;') + '</td></tr>';
 			}
 			html += '</table>';
 			document.getElementById('list-container').innerHTML = html;
