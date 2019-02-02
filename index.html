@@ -22,6 +22,16 @@
 		<br />
 		<h3>Resumen Consolidado</h3>
 		<br />
+		<!-- 
+		<div class="row">
+			<div class="col-md-12 text-right">
+				<button class="btn btn-outline-primary" type="button" name="button" [routerLink]="['/knowledge-area', 'new']">
+					Nuevo
+				</button>
+			</div>
+		</div>
+		<br />
+		-->
 		<div class="row animated fadeIn fast">
 			<div class="col-sm-12 col-md-4">
 				<div class="table-responsive" id="list-container" >
@@ -46,11 +56,28 @@
 			console.log('Cargando ' + increment++);
 			var html = '<table class="table" ><tr><th>Número</th><th>Importe</th></tr>';
 			for(var index in objectArray) {
-				html += '<tr><td>' + objectArray[index].numberId + '</td><td>' + objectArray[index].totalImport + '</td></tr>';
+				var saleImport = new Intl.NumberFormat().format(objectArray[index].totalImport);
+				html += '<tr><td>' + objectArray[index].numberId + '</td><td>' + fillString(saleImport, 10, '&nbsp;') + '</td></tr>';
 			}
 			html += '</table>';
 			document.getElementById('list-container').innerHTML = html;
 		}
+		
+		function fillString(pStringToFill, pSpaces, pFillPattern/* = " "*/)
+        {
+            var filledString = "";
+            var originalString = pStringToFill;
+            if (originalString.length < pSpaces)
+            {
+                var fillCount = pSpaces - originalString.length;
+                for (var i = 0; i < fillCount; i++)
+                {
+                    filledString += pFillPattern;
+                }
+            }
+            filledString += originalString;
+            return filledString;
+        }
 		
 		function getNumberList() {
 			//var url = 'http://localhost:5555/listnumberdetail/summary/';
